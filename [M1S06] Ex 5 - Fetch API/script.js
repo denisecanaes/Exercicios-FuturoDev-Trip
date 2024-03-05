@@ -14,3 +14,20 @@
 // Para acessar a documentação da API acesse: Report Wrapper - Report Dashboards
 // (opcional) Caso queira uma visualização melhor coloque na tag img
 // o atributo width: Ex: width='200'
+
+function showPictures() {
+  document.open();
+  fetch("https://api.thecatapi.com/v1/images/search?limit=10", {
+    method: "GET",
+  })
+    .then((responseFetch) => {
+      return responseFetch.json();
+    })
+    .then((x) => {
+      console.log(x);
+      for (let i = 0; i < x.length; i++) {
+        document.write(`<img src="${x[i].url}"/> <br />`);
+      }
+    });
+  document.close();
+}
